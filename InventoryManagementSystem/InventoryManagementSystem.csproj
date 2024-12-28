@@ -46,11 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAddCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminAddCategories.Designer.cs">
+      <DependentUpon>AdminAddCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAddUsers.Designer.cs">
+      <DependentUpon>AdminAddUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminsAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminsAddUser.Designer.cs">
+      <DependentUpon>AdminsAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriesData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,8 +91,24 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersData.cs" />
+    <EmbeddedResource Include="AdminAddCategories.resx">
+      <DependentUpon>AdminAddCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddUsers.resx">
+      <DependentUpon>AdminAddUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminsAddUser.resx">
+      <DependentUpon>AdminsAddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,10 +138,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Assets\icons8-user-100.png" />
+    <None Include="Assets\icons8-user-groups-80.png" />
+    <None Include="Assets\icons8-customers-80.png" />
+    <None Include="Assets\icons8-income-80.png" />
+    <None Include="Assets\icons8-money-80.png" />
+    <None Include="Assets\icons8-income-48.png" />
     <Content Include="Assets\Lock.png" />
     <Content Include="Assets\User Male_1.png" />
     <None Include="Assets\Female User.png" />
-    <Content Include="Assets\Female User.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

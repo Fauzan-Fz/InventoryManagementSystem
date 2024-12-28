@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.chShowPasswordRegister = new System.Windows.Forms.CheckBox();
+            this.txtConfirmPasswordRegister = new System.Windows.Forms.TextBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.lblQuestionRegister = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
@@ -37,17 +38,15 @@
             this.txtUsernameRegister = new System.Windows.Forms.TextBox();
             this.lblRegisterAccount = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.txtConfirmPasswordRegister = new System.Windows.Forms.TextBox();
-            this.chShowPasswordRegister = new System.Windows.Forms.CheckBox();
             this.panelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLogin
@@ -69,6 +68,27 @@
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(616, 415);
             this.panelLogin.TabIndex = 2;
+            // 
+            // chShowPasswordRegister
+            // 
+            this.chShowPasswordRegister.AutoSize = true;
+            this.chShowPasswordRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chShowPasswordRegister.Location = new System.Drawing.Point(297, 281);
+            this.chShowPasswordRegister.Name = "chShowPasswordRegister";
+            this.chShowPasswordRegister.Size = new System.Drawing.Size(151, 24);
+            this.chShowPasswordRegister.TabIndex = 11;
+            this.chShowPasswordRegister.Text = "Show Password";
+            this.chShowPasswordRegister.UseVisualStyleBackColor = true;
+            this.chShowPasswordRegister.CheckedChanged += new System.EventHandler(this.chShowPasswordRegister_CheckedChanged);
+            // 
+            // txtConfirmPasswordRegister
+            // 
+            this.txtConfirmPasswordRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPasswordRegister.Location = new System.Drawing.Point(193, 244);
+            this.txtConfirmPasswordRegister.Name = "txtConfirmPasswordRegister";
+            this.txtConfirmPasswordRegister.PasswordChar = '*';
+            this.txtConfirmPasswordRegister.Size = new System.Drawing.Size(255, 27);
+            this.txtConfirmPasswordRegister.TabIndex = 9;
             // 
             // lblLogin
             // 
@@ -108,24 +128,26 @@
             // 
             // txtPasswordRegister
             // 
-            this.txtPasswordRegister.Location = new System.Drawing.Point(193, 200);
+            this.txtPasswordRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPasswordRegister.Location = new System.Drawing.Point(193, 195);
             this.txtPasswordRegister.Name = "txtPasswordRegister";
             this.txtPasswordRegister.PasswordChar = '*';
-            this.txtPasswordRegister.Size = new System.Drawing.Size(255, 22);
+            this.txtPasswordRegister.Size = new System.Drawing.Size(255, 27);
             this.txtPasswordRegister.TabIndex = 2;
             // 
             // txtUsernameRegister
             // 
+            this.txtUsernameRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsernameRegister.Location = new System.Drawing.Point(193, 147);
             this.txtUsernameRegister.Name = "txtUsernameRegister";
-            this.txtUsernameRegister.Size = new System.Drawing.Size(255, 22);
+            this.txtUsernameRegister.Size = new System.Drawing.Size(255, 27);
             this.txtUsernameRegister.TabIndex = 1;
             // 
             // lblRegisterAccount
             // 
             this.lblRegisterAccount.AutoSize = true;
             this.lblRegisterAccount.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegisterAccount.Location = new System.Drawing.Point(193, 104);
+            this.lblRegisterAccount.Location = new System.Drawing.Point(197, 104);
             this.lblRegisterAccount.Name = "lblRegisterAccount";
             this.lblRegisterAccount.Size = new System.Drawing.Size(206, 27);
             this.lblRegisterAccount.TabIndex = 0;
@@ -137,13 +159,22 @@
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(680, 9);
+            this.btnClose.Location = new System.Drawing.Point(690, 9);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(73, 36);
+            this.btnClose.Size = new System.Drawing.Size(65, 29);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::InventoryManagementSystem.Properties.Resources.Lock;
+            this.pictureBox4.Location = new System.Drawing.Point(137, 240);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(34, 33);
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -165,49 +196,20 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources.Female_User;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(244, 12);
+            this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources.icons8_user_1001;
+            this.pictureBox1.InitialImage = global::InventoryManagementSystem.Properties.Resources.Female_User;
+            this.pictureBox1.Location = new System.Drawing.Point(240, -5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::InventoryManagementSystem.Properties.Resources.Lock;
-            this.pictureBox4.Location = new System.Drawing.Point(137, 240);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox4.TabIndex = 10;
-            this.pictureBox4.TabStop = false;
-            // 
-            // txtConfirmPasswordRegister
-            // 
-            this.txtConfirmPasswordRegister.Location = new System.Drawing.Point(193, 248);
-            this.txtConfirmPasswordRegister.Name = "txtConfirmPasswordRegister";
-            this.txtConfirmPasswordRegister.PasswordChar = '*';
-            this.txtConfirmPasswordRegister.Size = new System.Drawing.Size(255, 22);
-            this.txtConfirmPasswordRegister.TabIndex = 9;
-            // 
-            // chShowPasswordRegister
-            // 
-            this.chShowPasswordRegister.AutoSize = true;
-            this.chShowPasswordRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chShowPasswordRegister.Location = new System.Drawing.Point(297, 281);
-            this.chShowPasswordRegister.Name = "chShowPasswordRegister";
-            this.chShowPasswordRegister.Size = new System.Drawing.Size(151, 24);
-            this.chShowPasswordRegister.TabIndex = 11;
-            this.chShowPasswordRegister.Text = "Show Password";
-            this.chShowPasswordRegister.UseVisualStyleBackColor = true;
-            this.chShowPasswordRegister.CheckedChanged += new System.EventHandler(this.chShowPasswordRegister_CheckedChanged);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(768, 513);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.btnClose);
@@ -217,10 +219,10 @@
             this.Text = "RegisterForm";
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,7 +232,6 @@
         private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblLogin;
         private System.Windows.Forms.Label lblQuestionRegister;
         private System.Windows.Forms.Button btnRegister;
@@ -241,5 +242,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox txtConfirmPasswordRegister;
         private System.Windows.Forms.CheckBox chShowPasswordRegister;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

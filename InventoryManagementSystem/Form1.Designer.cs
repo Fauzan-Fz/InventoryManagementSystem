@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.chShowPasswordLogin = new System.Windows.Forms.CheckBox();
             this.lblRegister = new System.Windows.Forms.Label();
             this.lblQuestionLogin = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -40,7 +40,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chShowPasswordLogin = new System.Windows.Forms.CheckBox();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,17 +52,29 @@
             this.panelLogin.Controls.Add(this.chShowPasswordLogin);
             this.panelLogin.Controls.Add(this.pictureBox3);
             this.panelLogin.Controls.Add(this.pictureBox2);
-            this.panelLogin.Controls.Add(this.pictureBox1);
             this.panelLogin.Controls.Add(this.lblRegister);
             this.panelLogin.Controls.Add(this.lblQuestionLogin);
             this.panelLogin.Controls.Add(this.btnLogin);
             this.panelLogin.Controls.Add(this.txtPasswordLogin);
             this.panelLogin.Controls.Add(this.txtUsernameLogin);
             this.panelLogin.Controls.Add(this.lblLoginAccount);
+            this.panelLogin.Controls.Add(this.pictureBox1);
             this.panelLogin.Location = new System.Drawing.Point(78, 52);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(608, 408);
             this.panelLogin.TabIndex = 0;
+            // 
+            // chShowPasswordLogin
+            // 
+            this.chShowPasswordLogin.AutoSize = true;
+            this.chShowPasswordLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chShowPasswordLogin.Location = new System.Drawing.Point(333, 246);
+            this.chShowPasswordLogin.Name = "chShowPasswordLogin";
+            this.chShowPasswordLogin.Size = new System.Drawing.Size(151, 24);
+            this.chShowPasswordLogin.TabIndex = 9;
+            this.chShowPasswordLogin.Text = "Show Password";
+            this.chShowPasswordLogin.UseVisualStyleBackColor = true;
+            this.chShowPasswordLogin.CheckedChanged += new System.EventHandler(this.chShowPasswordLogin_CheckedChanged);
             // 
             // lblRegister
             // 
@@ -99,20 +110,23 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txtPasswordLogin
             // 
+            this.txtPasswordLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPasswordLogin.Location = new System.Drawing.Point(180, 218);
             this.txtPasswordLogin.Name = "txtPasswordLogin";
             this.txtPasswordLogin.PasswordChar = '*';
-            this.txtPasswordLogin.Size = new System.Drawing.Size(304, 22);
+            this.txtPasswordLogin.Size = new System.Drawing.Size(304, 27);
             this.txtPasswordLogin.TabIndex = 2;
             // 
             // txtUsernameLogin
             // 
+            this.txtUsernameLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsernameLogin.Location = new System.Drawing.Point(180, 159);
             this.txtUsernameLogin.Name = "txtUsernameLogin";
-            this.txtUsernameLogin.Size = new System.Drawing.Size(304, 22);
+            this.txtUsernameLogin.Size = new System.Drawing.Size(304, 27);
             this.txtUsernameLogin.TabIndex = 1;
             // 
             // lblLoginAccount
@@ -159,32 +173,20 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources.Female_User;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(243, 14);
+            this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources.icons8_user_1001;
+            this.pictureBox1.InitialImage = global::InventoryManagementSystem.Properties.Resources.Female_User;
+            this.pictureBox1.Location = new System.Drawing.Point(231, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            // 
-            // chShowPasswordLogin
-            // 
-            this.chShowPasswordLogin.AutoSize = true;
-            this.chShowPasswordLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chShowPasswordLogin.Location = new System.Drawing.Point(333, 246);
-            this.chShowPasswordLogin.Name = "chShowPasswordLogin";
-            this.chShowPasswordLogin.Size = new System.Drawing.Size(151, 24);
-            this.chShowPasswordLogin.TabIndex = 9;
-            this.chShowPasswordLogin.Text = "Show Password";
-            this.chShowPasswordLogin.UseVisualStyleBackColor = true;
-            this.chShowPasswordLogin.CheckedChanged += new System.EventHandler(this.chShowPasswordLogin_CheckedChanged);
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(768, 513);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panelLogin);
@@ -211,10 +213,10 @@
         private System.Windows.Forms.TextBox txtUsernameLogin;
         private System.Windows.Forms.Label lblRegister;
         private System.Windows.Forms.Label lblQuestionLogin;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.CheckBox chShowPasswordLogin;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -16,7 +16,7 @@ namespace InventoryManagementSystem
     {
 
         SqlConnection 
-            connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\fauza\OneDrive\Documents\Inventory.mdf;Integrated Security=True;Connect Timeout=30");
+            connect = new SqlConnection("Server = localhost; Database=Inventory;Trusted_Connection=True");
 
         public RegisterForm()
         {
@@ -40,7 +40,7 @@ namespace InventoryManagementSystem
         {
             if (txtUsernameRegister.Text == "" || txtPasswordRegister.Text == "" || txtConfirmPasswordRegister.Text == "")
             {
-                MessageBox.Show("Please fill the empty field","Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Please fill the empty field","Error Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else
             {
@@ -62,15 +62,15 @@ namespace InventoryManagementSystem
 
                             if (dt.Rows.Count > 0)
                             {
-                                MessageBox.Show(txtUsernameRegister.Text.Trim() + "Is already taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("'" + txtUsernameRegister.Text.Trim() + "'" + " Is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             } 
                             else if (txtPasswordRegister.Text.Length < 8)
                             {
-                                MessageBox.Show("Invalid Password, at least 8 characters are needed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Invalid Password, at least 8 characters are needed", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else if(txtPasswordRegister.Text.Trim() != txtConfirmPasswordRegister.Text.Trim())
                             {
-                                MessageBox.Show("Password does not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Password does not match", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
@@ -88,7 +88,7 @@ namespace InventoryManagementSystem
                                     InsertD.Parameters.AddWithValue("@date",today);
 
                                     InsertD.ExecuteNonQuery();
-                                    MessageBox.Show("Register Succesfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Register Succesfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                     FormLogin formLogin = new FormLogin();
                                     formLogin.Show();
@@ -101,7 +101,7 @@ namespace InventoryManagementSystem
                     catch(Exception ex)
                     {
                         MessageBox.Show("Connection Failed" + ex ,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
