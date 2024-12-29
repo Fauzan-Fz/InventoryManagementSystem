@@ -16,7 +16,7 @@ namespace InventoryManagementSystem
     {
 
         SqlConnection
-            connect = new SqlConnection("Server = localhost; Database=Inventory;Trusted_Connection=True");
+            connect = new SqlConnection("Server=localhost; Database=Inventory;Trusted_Connection=True");
 
 
         public FormLogin()
@@ -31,8 +31,8 @@ namespace InventoryManagementSystem
 
         private void lblRegister_Click(object sender, EventArgs e)
         {
-            RegisterForm registerform = new RegisterForm();
-            registerform.Show();
+            RegisterFormApp frm = new RegisterFormApp();
+            frm.ShowDialog();
 
             this.Hide();
         }
@@ -58,8 +58,8 @@ namespace InventoryManagementSystem
         {
             if (checkConnection())
             {
-                try
-                {
+                //try
+                //{
                     connect.Open();
 
                     string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
@@ -89,16 +89,16 @@ namespace InventoryManagementSystem
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Connection Failed : " + ex , "Error Message", 
-                                    MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    connect.Close();
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Connection Failed : " + ex , "Error Message", 
+                //                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //}
+                //finally
+                //{
+                //    connect.Close();
+                //}
             }
         }
     }

@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblRegisterAccount = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnCustomers = new System.Windows.Forms.Button();
@@ -40,10 +42,10 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.adminAddCategories1 = new InventoryManagementSystem.AdminAddCategories();
             this.adminsAddUser1 = new InventoryManagementSystem.AdminsAddUser();
             this.adminDashboard1 = new InventoryManagementSystem.AdminDashboard();
-            this.adminAddCategories1 = new InventoryManagementSystem.AdminAddCategories();
+            this.adminAddProducts1 = new InventoryManagementSystem.AdminAddProducts();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,6 +89,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
+            this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnAddProduct);
             this.panelMenu.Controls.Add(this.btnCustomers);
@@ -95,12 +98,21 @@
             this.panelMenu.Controls.Add(this.btnDashboard);
             this.panelMenu.Controls.Add(this.label1);
             this.panelMenu.Controls.Add(this.lblWelcome);
-            this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 45);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(283, 756);
             this.panelMenu.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(84, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // btnLogout
             // 
@@ -199,7 +211,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(93, 147);
+            this.label1.Location = new System.Drawing.Point(143, 147);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 2;
@@ -210,21 +222,18 @@
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.White;
-            this.lblWelcome.Location = new System.Drawing.Point(12, 147);
+            this.lblWelcome.Location = new System.Drawing.Point(62, 147);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(88, 20);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome, ";
             // 
-            // pictureBox1
+            // adminAddCategories1
             // 
-            this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources.icons8_user_100;
-            this.pictureBox1.Location = new System.Drawing.Point(84, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.adminAddCategories1.Location = new System.Drawing.Point(284, 43);
+            this.adminAddCategories1.Name = "adminAddCategories1";
+            this.adminAddCategories1.Size = new System.Drawing.Size(1107, 746);
+            this.adminAddCategories1.TabIndex = 9;
             // 
             // adminsAddUser1
             // 
@@ -240,18 +249,19 @@
             this.adminDashboard1.Size = new System.Drawing.Size(1107, 746);
             this.adminDashboard1.TabIndex = 7;
             // 
-            // adminAddCategories1
+            // adminAddProducts1
             // 
-            this.adminAddCategories1.Location = new System.Drawing.Point(284, 43);
-            this.adminAddCategories1.Name = "adminAddCategories1";
-            this.adminAddCategories1.Size = new System.Drawing.Size(1107, 746);
-            this.adminAddCategories1.TabIndex = 9;
+            this.adminAddProducts1.Location = new System.Drawing.Point(284, 45);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1107, 746);
+            this.adminAddProducts1.TabIndex = 10;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1394, 801);
+            this.Controls.Add(this.adminAddProducts1);
             this.Controls.Add(this.adminAddCategories1);
             this.Controls.Add(this.adminsAddUser1);
             this.Controls.Add(this.adminDashboard1);
@@ -277,7 +287,6 @@
         private System.Windows.Forms.Label lblRegisterAccount;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddProduct;
@@ -288,5 +297,7 @@
         private AdminDashboard adminDashboard1;
         private AdminsAddUser adminsAddUser1;
         private AdminAddCategories adminAddCategories1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private AdminAddProducts adminAddProducts1;
     }
 }
