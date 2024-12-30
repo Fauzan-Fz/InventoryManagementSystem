@@ -23,7 +23,7 @@ namespace InventoryManagementSystem
 
         private void AdminAddProducts_Load(object sender, EventArgs e)
         {
-            //DisplayCatecories();//
+            //DisplayCatecories()
         }
 
         public void displayAllProduct()
