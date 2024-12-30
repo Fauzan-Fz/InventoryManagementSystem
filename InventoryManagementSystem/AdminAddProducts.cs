@@ -160,12 +160,12 @@ namespace InventoryManagementSystem
 
         public void clearField()
         {
-            txtProductID.Text = "" ;
+            txtProductID.Text = "";
             txtProductName.Text = "";
-            comboBox_Category.SelectedIndex = -1 ;
+            comboBox_Category.SelectedIndex = -1;
             txtPrice.Text = "";
             txtStock.Text = "";
-            cbStatus.SelectedIndex = -1 ;
+            cbStatus.SelectedIndex = -1;
             PictureImport.Image = null;
         }
 
@@ -192,6 +192,63 @@ namespace InventoryManagementSystem
         private void btnClear_Click(object sender, EventArgs e)
         {
             clearField();
+        }
+
+        private int getID = 0;
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (emptyFields())
+            {
+                MessageBox.Show("Empty Field", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to Update Product Id : " + txtProductID.Text.Trim() + " ?", 
+                                    "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    connect.Open();
+
+                    string updateData = "UPDATE products SET prod_id = @prodID, prod_name = @prodName, " +
+                                        "category = @ctg, price = @price, stock = @stock, status = @status WHERE id = @id";
+
+                    using (SqlCommand updateD = new SqlCommand(updateData, connect))
+                    {
+                        updateD.Parameters.AddWithValue("@id", getID);
+                        updateD.Parameters.AddWithValue("@prodID", txtProductID.Text.Trim());
+                        updateD.Parameters.AddWithValue("@prodName", txtProductName.Text.Trim());
+                        updateD.Parameters.AddWithValue("@ctg", comboBox_Category.Text);
+                        updateD.Parameters.AddWithValue("@price", txtPrice.Text.Trim());
+                        updateD.Parameters.AddWithValue("@stock", txtStock.Text.Trim());
+                        updateD.Parameters.AddWithValue("@status", cbStatus.Text);
+
+                        updateD.ExecuteNonQuery();
+                        clearField();
+                        displayAllProduct();
+
+                        MessageBox.Show("Updated Succesfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                connect.Close();
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = (int)row.Cells[0].Value;
+                txtProductID.Text = row.Cells[1].Value.ToString();
+                txtProductName.Text = row.Cells[2].Value.ToString();
+                comboBox_Category.Text = row.Cells[3].Value.ToString();
+                txtPrice.Text = row.Cells[4].Value.ToString();
+                txtStock.Text = row.Cells[5].Value.ToString();
+                cbStatus.Text = row.Cells[7].Value.ToString();
+            }
         }
     }
 }
