@@ -58,16 +58,16 @@ namespace InventoryManagementSystem
         {
             if (checkConnection())
             {
-                //try
-                //{
+                try
+                {
                     connect.Open();
 
                     string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
 
-                    using (SqlCommand cmd = new SqlCommand(selectData,connect))
+                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         cmd.Parameters.AddWithValue("@usern", txtUsernameLogin.Text.Trim());
-                        cmd.Parameters.AddWithValue("@pass",txtPasswordLogin.Text.Trim());
+                        cmd.Parameters.AddWithValue("@pass", txtPasswordLogin.Text.Trim());
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable data = new DataTable();
@@ -75,8 +75,8 @@ namespace InventoryManagementSystem
 
                         if (data.Rows.Count > 0)
                         {
-                            MessageBox.Show("Login Succesfully!", "Information Message", 
-                                            MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("Login Succesfully!", "Information Message",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             MainForm mForm = new MainForm();
                             mForm.Show();
@@ -85,20 +85,21 @@ namespace InventoryManagementSystem
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect Username/Password, Please Try Again", "Error Message", 
+                            MessageBox.Show("Incorrect Username/Password, Please Try Again", "Error Message",
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show("Connection Failed : " + ex , "Error Message", 
-                //                    MessageBoxButtons.OK,MessageBoxIcon.Error);
-                //}
-                //finally
-                //{
-                //    connect.Close();
-                //}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Connection Failed : " + ex, "Error Message",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
             }
         }
     }

@@ -77,6 +77,18 @@
     <Compile Include="AdminsAddUser.Designer.cs">
       <DependentUpon>AdminsAddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="CashierIOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CashierIOrder.Designer.cs">
+      <DependentUpon>CashierIOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashierMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashierMainForm.Designer.cs">
+      <DependentUpon>CashierMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoriesData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -114,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminsAddUser.resx">
       <DependentUpon>AdminsAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierIOrder.resx">
+      <DependentUpon>CashierIOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierMainForm.resx">
+      <DependentUpon>CashierMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

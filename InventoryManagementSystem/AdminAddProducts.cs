@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -48,25 +49,13 @@ namespace InventoryManagementSystem
 
         public void DisplayCatecories()
         {
-            //if (checkConnection())
-            //{
-            //try
-            //{
             connect.Open();
 
             string selectData = "SELECT * FROM categories";
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                //SqlDataReader reader = cmd.ExecuteReader();
-                //if (reader.HasRows)
-                //{
-                //    while (reader.Read())
-                //    {
-                //        comboBox_Category.Items.Add(reader["category"].ToString());
-                //    }
-                //}
-
+                
                 SqlDataAdapter adapter = new SqlDataAdapter(selectData, connect);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -75,16 +64,9 @@ namespace InventoryManagementSystem
                 comboBox_Category.DisplayMember = "category";
                 comboBox_Category.ValueMember = "id";
             }
-            //}
-            //catch (Exception ex)
-            //{
-            //MessageBox.Show("Connection Failed" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //finally
             {
                 connect.Close();
             }
-            //}
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -204,7 +186,7 @@ namespace InventoryManagementSystem
             }
             else
             {
-                if (MessageBox.Show("Are you sure you want to Update Product Id : " + txtProductID.Text.Trim() + " ?", 
+                if (MessageBox.Show("Are you sure you want to Update Product Id : " + txtProductID.Text.Trim() + " ?",
                                     "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
@@ -247,7 +229,53 @@ namespace InventoryManagementSystem
                 comboBox_Category.Text = row.Cells[3].Value.ToString();
                 txtPrice.Text = row.Cells[4].Value.ToString();
                 txtStock.Text = row.Cells[5].Value.ToString();
+                string imagepath = row.Cells[6].Value.ToString();
+
+                try
+                {
+                    if (imagepath != null)
+                    {
+                        PictureImport.Image = Image.FromFile(imagepath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Image" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 cbStatus.Text = row.Cells[7].Value.ToString();
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (emptyFields())
+            {
+                MessageBox.Show("Empty Field", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to Delete Product Id : " + txtProductID.Text.Trim() + " ?",
+                                    "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    connect.Open();
+
+                    string deleteData = "DELETE FROM products WHERE id = @id";
+
+                    using (SqlCommand deleteD = new SqlCommand(deleteData, connect))
+                    {
+                        deleteD.Parameters.AddWithValue("@id", getID);
+
+                        deleteD.ExecuteNonQuery();
+                        clearField();
+                        displayAllProduct();
+
+                        MessageBox.Show("Deleted Succesfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                connect.Close();
             }
         }
     }
