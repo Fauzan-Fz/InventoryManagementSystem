@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace InventoryManagementSystem
 {
@@ -15,6 +16,15 @@ namespace InventoryManagementSystem
         public CashierIOrder()
         {
             InitializeComponent();
+            displayAllAvailableProducts();
+        }
+
+        public void displayAllAvailableProducts()
+        {
+            AddProductsData apData = new AddProductsData();
+            List<AddProductsData> listdata = apData.AllProductsData();
+
+            dataGridView1.DataSource = listdata;
         }
     }
 }

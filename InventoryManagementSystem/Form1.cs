@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace InventoryManagementSystem
 {
@@ -62,32 +55,50 @@ namespace InventoryManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
+                    string selectData = "SELECT COUNT(*) FROM users WHERE username = @usern AND password = @pass AND status = @status";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         cmd.Parameters.AddWithValue("@usern", txtUsernameLogin.Text.Trim());
                         cmd.Parameters.AddWithValue("@pass", txtPasswordLogin.Text.Trim());
+                        cmd.Parameters.AddWithValue("@status", "Active");
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable data = new DataTable();
-                        adapter.Fill(data);
+                        int rowCount = (int)cmd.ExecuteScalar();
 
-                        if (data.Rows.Count > 0)
+                        if (rowCount > 0)
                         {
-                            MessageBox.Show("Login Succesfully!", "Information Message",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string selectRole = "SELECT role FROM users WHERE username = @usern AND password = @pass";
 
-                            MainForm mForm = new MainForm();
-                            mForm.Show();
+                            using (SqlCommand getRole = new SqlCommand(selectRole, connect))
+                            {
+                                getRole.Parameters.AddWithValue("@usern", txtUsernameLogin.Text.Trim());
+                                getRole.Parameters.AddWithValue("@pass", txtPasswordLogin.Text.Trim());
 
-                            this.Hide();
+                                string userRole = getRole.ExecuteScalar() as string;
+
+                                MessageBox.Show("Login Successful", "Information",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                if (userRole == "Admin")
+                                {
+                                    MainForm mainForm = new MainForm();
+                                    mainForm.Show();
+
+                                    this.Hide();
+                                }
+                                else if(userRole == "Cashier")
+                                {
+                                    CashierMainForm cMainForm = new CashierMainForm();
+                                    cMainForm.Show();
+
+                                    this.Hide();
+                                }
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect Username/Password, Please Try Again", "Error Message",
+                            MessageBox.Show("Invalid Username/Password or there's no admin's approval", "Error Message",
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
                         }
                     }
                 }

@@ -42,8 +42,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.adminDashboard1 = new InventoryManagementSystem.AdminDashboard();
             this.adminAddProducts1 = new InventoryManagementSystem.AdminAddProducts();
+            this.adminDashboard1 = new InventoryManagementSystem.AdminDashboard();
+            this.cashierIOrder1 = new InventoryManagementSystem.CashierIOrder();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -211,6 +212,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cashierIOrder1);
             this.panel2.Controls.Add(this.adminAddProducts1);
             this.panel2.Controls.Add(this.adminDashboard1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,6 +221,13 @@
             this.panel2.Size = new System.Drawing.Size(1111, 756);
             this.panel2.TabIndex = 8;
             // 
+            // adminAddProducts1
+            // 
+            this.adminAddProducts1.Location = new System.Drawing.Point(1, 0);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1107, 746);
+            this.adminAddProducts1.TabIndex = 1;
+            // 
             // adminDashboard1
             // 
             this.adminDashboard1.Location = new System.Drawing.Point(1, 0);
@@ -226,12 +235,12 @@
             this.adminDashboard1.Size = new System.Drawing.Size(1107, 746);
             this.adminDashboard1.TabIndex = 0;
             // 
-            // adminAddProducts1
+            // cashierIOrder1
             // 
-            this.adminAddProducts1.Location = new System.Drawing.Point(1, 0);
-            this.adminAddProducts1.Name = "adminAddProducts1";
-            this.adminAddProducts1.Size = new System.Drawing.Size(1107, 746);
-            this.adminAddProducts1.TabIndex = 1;
+            this.cashierIOrder1.Location = new System.Drawing.Point(3, 0);
+            this.cashierIOrder1.Name = "cashierIOrder1";
+            this.cashierIOrder1.Size = new System.Drawing.Size(1107, 746);
+            this.cashierIOrder1.TabIndex = 2;
             // 
             // CashierMainForm
             // 
@@ -272,5 +281,6 @@
         private System.Windows.Forms.Panel panel2;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboard adminDashboard1;
+        private CashierIOrder cashierIOrder1;
     }
 }
