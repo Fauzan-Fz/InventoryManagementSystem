@@ -37,3 +37,34 @@ CREATE TABLE products
 )
 
 SELECT *  FROM products
+
+CREATE TABLE orders
+(
+	id int PRIMARY KEY IDENTITY(1,1),
+	customers_id VARCHAR(MAX) NULL,
+	prod_id VARCHAR(MAX) NULL,
+	prod_name VARCHAR(MAX)NULL,
+	category VARCHAR(MAX) NULL,
+	qty INT NULL,
+	orig_price FLOAT NULL,
+	total_price FLOAT NULL,
+	order_date DATE NULL
+)
+
+SELECT * FROM orders
+
+ALTER TABLE orders
+ADD customers_id INT NULL
+
+CREATE TABLE customers
+(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	customer_id INT NULL,
+	prod_id VARCHAR(MAX) NULL,
+	total_price FLOAT NULL,
+	amount FLOAT NULL,
+	change FLOAT NULL,
+	order_date DATE NULL
+)
+
+SELECT * FROM customers

@@ -32,6 +32,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -121,6 +121,16 @@
             this.panel2.Size = new System.Drawing.Size(663, 342);
             this.panel2.TabIndex = 1;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(22, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(181, 22);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Select Your Orders";
+            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
@@ -168,6 +178,7 @@
             this.btnAddUser.TabIndex = 12;
             this.btnAddUser.Text = "Add";
             this.btnAddUser.UseVisualStyleBackColor = false;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // lblPrice
             // 
@@ -175,9 +186,9 @@
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.Location = new System.Drawing.Point(199, 169);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(86, 18);
+            this.lblPrice.Size = new System.Drawing.Size(45, 18);
             this.lblPrice.TabIndex = 11;
-            this.lblPrice.Text = "Category :";
+            this.lblPrice.Text = "price";
             // 
             // lblPr
             // 
@@ -195,9 +206,9 @@
             this.lblProdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(199, 124);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(86, 18);
+            this.lblProdName.Size = new System.Drawing.Size(49, 18);
             this.lblProdName.TabIndex = 9;
-            this.lblProdName.Text = "Category :";
+            this.lblProdName.Text = "name";
             // 
             // lblProdN
             // 
@@ -221,20 +232,21 @@
             // 
             // numericQuantity
             // 
-            this.numericQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericQuantity.Location = new System.Drawing.Point(465, 140);
             this.numericQuantity.Name = "numericQuantity";
-            this.numericQuantity.Size = new System.Drawing.Size(154, 22);
+            this.numericQuantity.Size = new System.Drawing.Size(154, 24);
             this.numericQuantity.TabIndex = 6;
             // 
             // cbProductsID
             // 
-            this.cbProductsID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbProductsID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProductsID.FormattingEnabled = true;
             this.cbProductsID.Location = new System.Drawing.Point(465, 71);
             this.cbProductsID.Name = "cbProductsID";
-            this.cbProductsID.Size = new System.Drawing.Size(154, 24);
+            this.cbProductsID.Size = new System.Drawing.Size(154, 26);
             this.cbProductsID.TabIndex = 5;
+            this.cbProductsID.SelectedIndexChanged += new System.EventHandler(this.cbProductsID_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -248,12 +260,13 @@
             // 
             // cbCategory
             // 
-            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(131, 71);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(154, 24);
+            this.cbCategory.Size = new System.Drawing.Size(154, 26);
             this.cbCategory.TabIndex = 3;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -396,16 +409,6 @@
             this.lblTotalPrice.Size = new System.Drawing.Size(49, 22);
             this.lblTotalPrice.TabIndex = 13;
             this.lblTotalPrice.Text = "0.00";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(181, 22);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Select Your Orders";
             // 
             // CashierIOrder
             // 

@@ -63,6 +63,7 @@
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel1
             // 
@@ -142,6 +143,7 @@
             this.btnLogout.TabIndex = 8;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnAddProduct
             // 
@@ -237,7 +239,7 @@
             // 
             // cashierIOrder1
             // 
-            this.cashierIOrder1.Location = new System.Drawing.Point(3, 0);
+            this.cashierIOrder1.Location = new System.Drawing.Point(1, 0);
             this.cashierIOrder1.Name = "cashierIOrder1";
             this.cashierIOrder1.Size = new System.Drawing.Size(1107, 746);
             this.cashierIOrder1.TabIndex = 2;
