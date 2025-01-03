@@ -44,7 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.adminAddProducts1 = new InventoryManagementSystem.AdminAddProducts();
             this.adminDashboard1 = new InventoryManagementSystem.AdminDashboard();
-            this.cashierIOrder1 = new InventoryManagementSystem.CashierIOrder();
+            this.cashierIOrder1 = new InventoryManagementSystem.CashierOrder();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -283,6 +283,6 @@
         private System.Windows.Forms.Panel panel2;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboard adminDashboard1;
-        private CashierIOrder cashierIOrder1;
+        private CashierOrder cashierIOrder1;
     }
 }

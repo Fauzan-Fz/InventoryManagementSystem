@@ -6,17 +6,21 @@ using System.Windows.Forms;
 namespace InventoryManagementSystem
 {
 
-    public partial class CashierIOrder : UserControl
+    public partial class CashierOrder : UserControl
     {
 
         SqlConnection
             connect = new SqlConnection("Server=localhost;Database=Inventory;Trusted_Connection=True;");
 
-        public CashierIOrder()
+        public CashierOrder()
         {
             InitializeComponent();
+
             displayAllAvailableProducts();
             displayAllCategories();
+
+            displayOrders();
+            displayTotalPrice();
         }
 
         public void displayAllAvailableProducts()
@@ -25,6 +29,14 @@ namespace InventoryManagementSystem
             List<AddProductsData> listdata = apData.AllProductsData();
 
             dataGridView1.DataSource = listdata;
+        }
+
+        public void displayOrders()
+        {
+            OrdersData oData = new OrdersData();
+            List<OrdersData> listData = oData.allOrdersData();
+
+            dataGridView2.DataSource = listData;
         }
 
         public void displayAllCategories()
@@ -142,6 +154,42 @@ namespace InventoryManagementSystem
             }
         }
 
+        private float totalPrice = 0;
+
+        public void displayTotalPrice()
+        {
+            IDGenerator();
+
+            try
+            {
+                connect.Open();
+
+                string selectData = "SELECT SUM(total_price) FROM orders WHERE customers_id = @cID";
+
+                using (SqlCommand selectD = new SqlCommand(selectData, connect))
+                {
+                    selectD.Parameters.AddWithValue("@cID", idGen);
+
+                    object result = selectD.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        totalPrice = Convert.ToInt32(result);
+                        lblTotalPrice.Text = totalPrice.ToString("0.00");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }
+
+
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             IDGenerator();
@@ -158,7 +206,7 @@ namespace InventoryManagementSystem
                     float getPrice = 0;
                     string selectOrder = "SELECT * FROM products WHERE prod_id = @prodID";
 
-                    using (SqlCommand getOrder =  new SqlCommand(selectOrder, connect))
+                    using (SqlCommand getOrder = new SqlCommand(selectOrder, connect))
                     {
                         getOrder.Parameters.AddWithValue("@prodID", cbProductsID.SelectedItem);
 
@@ -179,20 +227,20 @@ namespace InventoryManagementSystem
                     string insertData = "INSERT INTO orders (customers_id,prod_id,prod_name,category,qty,orig_price,total_price,order_date) " +
                         "VALUES(@cID,@prodID,@prodName,@ctg,@qty,@origPrice,@totalprice,@date)";
 
-                    using (SqlCommand cmd = new SqlCommand(insertData,connect))
+                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@cID",idGen);
-                        cmd.Parameters.AddWithValue("@prodID",cbProductsID.SelectedItem);
+                        cmd.Parameters.AddWithValue("@cID", idGen);
+                        cmd.Parameters.AddWithValue("@prodID", cbProductsID.SelectedItem);
                         cmd.Parameters.AddWithValue("@prodName", lblProdName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ctg",cbCategory.SelectedItem);
-                        cmd.Parameters.AddWithValue("@qty",numericQuantity.Value);
-                        cmd.Parameters.AddWithValue("origPrice",getPrice);
+                        cmd.Parameters.AddWithValue("@ctg", cbCategory.SelectedItem);
+                        cmd.Parameters.AddWithValue("@qty", numericQuantity.Value);
+                        cmd.Parameters.AddWithValue("origPrice", getPrice);
 
-                        float totalP = (getPrice*(int)numericQuantity.Value);
+                        float totalP = (getPrice * (int)numericQuantity.Value);
                         DateTime date = DateTime.Today;
 
-                        cmd.Parameters.AddWithValue("@totalprice",totalP);
-                        cmd.Parameters.AddWithValue("@date",date);
+                        cmd.Parameters.AddWithValue("@totalprice", totalP);
+                        cmd.Parameters.AddWithValue("@date", date);
 
                         cmd.ExecuteNonQuery();
 
@@ -207,6 +255,8 @@ namespace InventoryManagementSystem
                     connect.Close();
                 }
             }
+            displayOrders();
+            displayTotalPrice();
         }
 
         private int idGen;
@@ -242,6 +292,68 @@ namespace InventoryManagementSystem
                     }
                 }
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (prodID == 0)
+            {
+                MessageBox.Show("Please select item first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to Remove ID : " + prodID + "?", "Confirmation Message",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //try
+                    //{
+                        connect.Open();
+
+                        string deleteData = "DELETE FROM orders WHERE id = @id";
+
+                        using (SqlCommand deleteD = new SqlCommand(deleteData, connect))
+                        {
+                            deleteD.Parameters.AddWithValue("@id", prodID);
+                            deleteD.ExecuteNonQuery();
+
+                            MessageBox.Show("Remove Succesfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    //}
+                    //catch
+                    //{
+
+                    //}
+                    //finally
+                    //{
+                        connect.Close();
+                    //}
+                }
+            }
+            displayOrders();
+            displayTotalPrice();
+        }
+
+        private int prodID = 0;
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex != 1)
+            //{
+            //    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+            //    prodID = (int)row.Cells[0].Value;
+
+            //}
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex != 1)
+            //{
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                prodID = (int)row.Cells[0].Value;
+           //}
         }
     }
 }
